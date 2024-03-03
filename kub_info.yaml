@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: m1-flask-app
+spec:
+  replicas: 1     # replicas of pods to maintain load balance
+  selector:
+    matchLabels:
+      app: m1-flask-app
+  template:
+    metadata:
+      labels:
+        app: m1-flask-app
+    spec:
+      containers:
+        - name: m1-flask-app
+          image: akshat777/docker_1st_project:latest
+          ports:
+          - containerPort: 5000
